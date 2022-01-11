@@ -19,13 +19,13 @@
       "path": "lang/en.json"
     }
   ],
-  "socket":  false,
+  "socket": false,
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
   "url": "https://github.com/deidril/hackmaster5",
-  "manifest": "https://github.com/deidril/hackmaster5/-/raw/master/system.json",
-  "download": "https://github.com/deidril/hackmaster5/-/archive/0.0.1/hm5-master.zip",
+  "manifest": "https://github.com/deidril/hackmaster5/blob/versions/0_0_1/system.json",
+  "download": "https://github.com/deidril/hackmaster5/archive/refs/heads/versions/0_0_1.zip",
   "license": "LICENSE.txt"
 }
