@@ -1,21 +1,14 @@
 {
   "name": "hm5",
-  "title": "HackMaster",
-  "description": "The HackMaster V5 system for FoundryVTT!",
-  "author": "Deidril",
-  "authors": [],
-  "url": "https://github.com/deidril/hackmaster5",
-  "license": "LICENSE.txt",
-  "bugs": "https://github.com/deidril/hackmaster5/issues",
-  "flags": {},
-
+  "title": "Hackmaster 5",
+  "description": "Hackmaster 5 for foundryvtt",
   "version": "0.0.1",
-  "minimumCoreVersion": "0.8.6",
+  "minimumCoreVersion": "0.8.9",
   "compatibleCoreVersion": "9",
-
-  "scripts": [],
-  "esmodules": [ "module/hm5.mjs" ],
-  "styles": [ "css/hm5.css" ],
+  "author": "Deidril",
+  "esmodules": [ "module/simple.js" ],
+  "styles": [ "styles/simple.css" ],
+  "packs": [],
   "languages": [
     {
       "lang": "en",
@@ -23,17 +16,12 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [],
-
-  "system": [],
-  "dependencies": [],
-  "socket": true,
-  "manifest": "https://github.com/deidril/hackmaster5/blob/versions/0_0_1/system.json",
-  "download": "https://github.com/deidril/hackmaster5/archive/refs/heads/versions/0_0_1.zip",
-  "protected": false,
-  "initiative": "@attributes.init.die + @attributes.init.value",
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
+  "url": "https://github.com/deidril/hackmaster5",
+  "manifest": "https://github.com/deidril/hackmaster5/blob/versions/0_0_1/system.json",
+  "download": "https://github.com/deidril/hackmaster5/archive/refs/heads/versions/0_0_1.zip",
+  "license": "LICENSE.txt"
 }
