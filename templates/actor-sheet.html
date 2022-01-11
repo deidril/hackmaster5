@@ -9,8 +9,8 @@
             </h1>
             <div class="resource">
                 <input type="number" name="data.health.value" value="{{systemData.health.value}}"/>
-                <span> / </span>
-                <input type="number" name="data.health.max" value="{{systemData.health.max}}"/>
+                    <span> / </span>
+                    <input type="number" name="data.health.max" value="{{systemData.health.max}}" />
             </div>
             <div class="resource">
                 <input type="number" name="data.power.value" value="{{systemData.power.value}}"/>
@@ -99,17 +99,17 @@
             </header>
 
             {{!-- Render the attribute list partial. --}}
-            {{> "systems/worldbuilding/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
+            {{> "systems/hm5/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
 
             {{!-- Render the grouped attributes partial and control. --}}
-            <div class="groups">
-                {{> "systems/worldbuilding/templates/parts/sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
+        <div class="groups">
+            {{> "systems/hm5/templates/parts/sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
 
-                <div class="group-controls flexrow">
-                    <input class="group-prefix" type="text" value=""/>
-                    <a class="button group-control" data-action="create-group"><i class="fas fa-plus"></i>Add Attribute Group</a>
-                </div>
+            <div class="group-controls flexrow">
+                <input class="group-prefix" type="text" value="" />
+                <a class="button group-control" data-action="create-group"><i class="fas fa-plus"></i>Add Attribute Group</a>
             </div>
+        </div>
         </div>
     </section>
 </form>

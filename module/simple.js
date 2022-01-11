@@ -20,7 +20,7 @@ import { SimpleTokenDocument } from "./simpletokendocument.js";
  * Init hook.
  */
 Hooks.once("init", async function() {
-  console.log(`Initializing Simple Worldbuilding System`);
+  console.log(`Initializing Hackmaster System`);
 
   /**
    * Set an initiative formula for the system. This will be updated later.
@@ -31,7 +31,7 @@ Hooks.once("init", async function() {
     decimals: 2
   };
 
-  game.worldbuilding = {
+  game.hm5 = {
     SimpleActor,
     createWorldbuildingMacro,
     useEntity: foundry.utils.isNewerVersion("9", game.version ?? game.data.version)
@@ -46,12 +46,12 @@ Hooks.once("init", async function() {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("worldbuilding", SimpleActorSheet, { makeDefault: true });
+  Actors.registerSheet("hm5", SimpleActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("worldbuilding", SimpleItemSheet, { makeDefault: true });
+  Items.registerSheet("hm5", SimpleItemSheet, { makeDefault: true });
 
   // Register system settings
-  game.settings.register("worldbuilding", "macroShorthand", {
+  game.settings.register("hm5", "macroShorthand", {
     name: "SETTINGS.SimpleMacroShorthandN",
     hint: "SETTINGS.SimpleMacroShorthandL",
     scope: "world",
@@ -61,7 +61,7 @@ Hooks.once("init", async function() {
   });
 
   // Register initiative setting.
-  game.settings.register("worldbuilding", "initFormula", {
+  game.settings.register("hm5", "initFormula", {
     name: "SETTINGS.SimpleInitFormulaN",
     hint: "SETTINGS.SimpleInitFormulaL",
     scope: "world",
@@ -72,7 +72,7 @@ Hooks.once("init", async function() {
   });
 
   // Retrieve and assign the initiative formula setting.
-  const initFormula = game.settings.get("worldbuilding", "initFormula");
+  const initFormula = game.settings.get("hm5", "initFormula");
   _simpleUpdateInit(initFormula);
 
   /**
@@ -109,18 +109,18 @@ Hooks.on("hotbarDrop", (bar, data, slot) => createWorldbuildingMacro(data, slot)
  * Adds the actor template context menu.
  */
 Hooks.on("getActorDirectoryEntryContext", (html, options) => {
-  const idAttr = game.worldbuilding.useEntity ? "entityId" : "documentId";
+  const idAttr = game.hm5.useEntity ? "entityId" : "documentId";
   // Define an actor as a template.
   options.push({
     name: game.i18n.localize("SIMPLE.DefineTemplate"),
     icon: '<i class="fas fa-stamp"></i>',
     condition: li => {
       const actor = game.actors.get(li.data(idAttr));
-      return !actor.getFlag("worldbuilding", "isTemplate");
+        return !actor.getFlag("hm5", "isTemplate");
     },
     callback: li => {
       const actor = game.actors.get(li.data(idAttr));
-      actor.setFlag("worldbuilding", "isTemplate", true);
+        actor.setFlag("hm5", "isTemplate", true);
     }
   });
 
@@ -130,11 +130,11 @@ Hooks.on("getActorDirectoryEntryContext", (html, options) => {
     icon: '<i class="fas fa-times"></i>',
     condition: li => {
       const actor = game.actors.get(li.data(idAttr));
-      return actor.getFlag("worldbuilding", "isTemplate");
+        return actor.getFlag("hm5", "isTemplate");
     },
     callback: li => {
       const actor = game.actors.get(li.data(idAttr));
-      actor.setFlag("worldbuilding", "isTemplate", false);
+        actor.setFlag("hm5", "isTemplate", false);
     }
   });
 });
@@ -143,18 +143,18 @@ Hooks.on("getActorDirectoryEntryContext", (html, options) => {
  * Adds the item template context menu.
  */
 Hooks.on("getItemDirectoryEntryContext", (html, options) => {
-  const idAttr = game.worldbuilding.useEntity ? "entityId" : "documentId";
+    const idAttr = game.hm5.useEntity ? "entityId" : "documentId";
   // Define an item as a template.
   options.push({
     name: game.i18n.localize("SIMPLE.DefineTemplate"),
     icon: '<i class="fas fa-stamp"></i>',
     condition: li => {
       const item = game.items.get(li.data(idAttr));
-      return !item.getFlag("worldbuilding", "isTemplate");
+        return !item.getFlag("hm5", "isTemplate");
     },
     callback: li => {
       const item = game.items.get(li.data(idAttr));
-      item.setFlag("worldbuilding", "isTemplate", true);
+        item.setFlag("hm5", "isTemplate", true);
     }
   });
 
@@ -164,11 +164,11 @@ Hooks.on("getItemDirectoryEntryContext", (html, options) => {
     icon: '<i class="fas fa-times"></i>',
     condition: li => {
       const item = game.items.get(li.data(idAttr));
-      return item.getFlag("worldbuilding", "isTemplate");
+        return item.getFlag("hm5", "isTemplate");
     },
     callback: li => {
       const item = game.items.get(li.data(idAttr));
-      item.setFlag("worldbuilding", "isTemplate", false);
+        item.setFlag("hm5", "isTemplate", false);
     }
   });
 });

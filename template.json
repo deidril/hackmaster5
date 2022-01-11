@@ -1,6 +1,17 @@
 {
 "Actor": {
-  "types": ["character"],
+  "types": [ "character" ],
+  "templates": {
+    "common": {
+      "abilities": {
+        "str": {
+          "label": "HM5.abilityStr",
+          "value": 10,
+          "max":  10
+        }
+      }
+    }
+  },
   "character": {
     "biography": "",
     "health": {
