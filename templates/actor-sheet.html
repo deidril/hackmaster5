@@ -8,6 +8,9 @@
                 <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
             </h1>
             <div class="resource">
+                <p>{{localize "HM5.abilityStr" }} {{systemData.test.value}}</p>
+            </div>
+            <div class="resource">
                 <input type="number" name="data.health.value" value="{{systemData.health.value}}"/>
                     <span> / </span>
                     <input type="number" name="data.health.max" value="{{systemData.health.max}}" />
@@ -19,22 +22,18 @@
             </div>
         </div>
     </header>
-
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">Description</a>
         <a class="item" data-tab="items">Items</a>
         <a class="item" data-tab="attributes">Attributes</a>
     </nav>
-
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-
         {{!-- Biography Tab --}}
         <div class="tab description" data-group="primary" data-tab="description">
             {{editor content=systemData.biography target="data.biography" button=true owner=owner editable=editable rollData=rollData}}
         </div>
-
         {{!-- Owned Items Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="item-list">
@@ -87,7 +86,6 @@
                 <a class="item-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
             </p>
         </div>
-
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             <header class="attributes-header flexrow">
@@ -97,14 +95,11 @@
                 <span class="attribute-dtype">{{localize "SIMPLE.AttributeDtype"}}</span>
                 <a class="attribute-control" data-action="create" data-group="{{group}}"><i class="fas fa-plus"></i></a>
             </header>
-
             {{!-- Render the attribute list partial. --}}
             {{> "systems/hm5/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
-
             {{!-- Render the grouped attributes partial and control. --}}
         <div class="groups">
             {{> "systems/hm5/templates/parts/sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
-
             <div class="group-controls flexrow">
                 <input class="group-prefix" type="text" value="" />
                 <a class="button group-control" data-action="create-group"><i class="fas fa-plus"></i>Add Attribute Group</a>
